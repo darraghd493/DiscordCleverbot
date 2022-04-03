@@ -20,7 +20,7 @@ module.exports = {
     client.activeCleverbot.cleverbots.get(Key(message.guild.id, message.channel.id)).resetCache();
     
     message.channel.send({
-      content: "Set up cleverbot!"}).then((infoMessage) => {
+      content: "Restarted the Cleverbot conversation!"}).then((infoMessage) => {
       setTimeout(() => {
         if (infoMessage.editable) // https://github.com/discordjs/discord.js/issues/7091
           infoMessage.delete();

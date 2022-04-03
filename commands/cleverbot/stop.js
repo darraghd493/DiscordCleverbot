@@ -20,7 +20,7 @@ module.exports = {
     client.activeCleverbot.cleverbots.get(Key(message.guild.id, message.channel.id)).selfDestruct();
     
     message.channel.send({
-      content: "Closed cleverbot!"}).then((infoMessage) => {
+      content: "Stopped cleverbot!"}).then((infoMessage) => {
       setTimeout(() => {
         if (infoMessage.editable) // https://github.com/discordjs/discord.js/issues/7091
           infoMessage.delete();

@@ -17,6 +17,14 @@ module.exports = {
     }
     
     client.activeCleverbot.servers.set(message.guild.id, message.channel.id);
-    client.activeCleverbot.cleverbots.set(Key(message.guild.id, message.channel.id), new Cleverbot(client.activeCleverbot, client.config.cache.limit, false));
+    client.activeCleverbot.cleverbots.set(Key(message.guild.id, message.channel.id), new Cleverbot(client, client.config.cache.limit, false));
+    
+    message.channel.send({
+      content: "Started Cleverbot!"}).then((infoMessage) => {
+      setTimeout(() => {
+        if (infoMessage.editable) // https://github.com/discordjs/discord.js/issues/7091
+          infoMessage.delete();
+      }, 15000);
+    });
 	}
 };
