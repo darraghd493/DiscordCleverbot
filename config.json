@@ -1,0 +1,26 @@
+{
+  "activity": {
+    "switch": {
+      "enabled": true,
+      "delay": 30000
+    },
+    "activities": [
+      {
+        "message": "Cleverbot for a response",
+        "type": "Watching"
+      },
+      {
+        "message": "cb.help for help",
+        "type": "Playing"
+      },
+      {
+        "message": "with Cleverbot",
+        "type": "Playing"
+      }
+    ]
+  },
+  "cache": {
+    "limit": 5000
+  },
+  "prefix": "cb."
+}

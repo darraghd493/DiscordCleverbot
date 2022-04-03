@@ -1,0 +1,22 @@
+{
+  "name": "discord-cleverbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "node": "^16.14.2"
+  },
+  "dependencies": {
+    "cleverbot-free": "^1.1.10",
+    "discord.js": "^13.6.0",
+    "express": "^4.17.3",
+    "glob": "^7.2.0",
+    "util": "^0.12.4"
+  }
+}
