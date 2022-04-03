@@ -5,9 +5,9 @@ const prefix = require("./config.json").prefix;
 const express = require('express');
 const app = express();
 const port = 3000;
- 
-app.get('/', (request, res) => {
-  res.send('Bot Is Up');
+
+app.get('/', (request, response) => {
+  response.sendFile(__dirname + '/page.html');
 });
 
 app.listen(port, () => {

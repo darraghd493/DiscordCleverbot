@@ -50,29 +50,29 @@ class Cleverbot {
 
     try {
       if (this.cache.length == 0)
-        cleverbotApi(contents).then((response) => {
+        cleverbotApi(contents).then((cleverbotMessage) => {
           if (
-            response != null || 
-              reponse != undefined
-             ) {
+            cleverbotMessage != null || 
+            cleverbotMessage != undefined
+            ) {
             this.cache.push(contents);
-            this.cache.push(response);
+            this.cache.push(cleverbotMessage);
     
             channel.send({
-              content: response});
+              content: cleverbotMessage});
           }
         });
       else
-        cleverbotApi(contents, this.cache).then((response) => {
+        cleverbotApi(contents, this.cache).then((cleverbotMessage) => {
           if (
-            response != null || 
-              reponse != undefined
-             ) {
+            cleverbotMessage != null || 
+            cleverbotMessage != undefined
+            ) {
             this.cache.push(contents);
-            this.cache.push(response);
+            this.cache.push(cleverbotMessage);
     
             channel.send({
-              content: response});
+              content: cleverbotMessage});
           }
         });
   

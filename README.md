@@ -1,5 +1,5 @@
 # Discord Cleverbot
-'Discord Cleverbot' is a port of Cleverbot to Discord using [node.js](https://nodejs.org) and [discord.js](https://https://discord.js.org).
+'Discord Cleverbot' is an interface for [Cleverbot](https://cleverbot.com) on [Discord](https://discord.gg) using [node.js](https://nodejs.org) and [discord.js](https://https://discord.js.org).
 
 ## How to Fix.
 #### repl.it
