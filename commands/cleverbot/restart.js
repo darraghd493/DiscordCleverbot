@@ -6,14 +6,15 @@ module.exports = {
 	description: "Restarts the Cleverbot conversation",
   
 	run: async (client, message, args) => {
-    if (client.activeCleverbot.servers.has(message.guild.id))
-      client.channels.cache.get(
-        client.activeCleverbot.servers.get(message.guild.id)).send("Cleverbot's converastion has been restarted by another user.").then((infoMessage) => {
-          setTimeout(() => {
-            infoMessage.delete();
-          }, 15000);
-        });
-    else
+    if (client.activeCleverbot.servers.has(message.guild.id)) {
+      if (client.activeCleverbot.servers.get(message.guild.id) != message.channel.id)
+        client.channels.cache.get(
+          client.activeCleverbot.servers.get(message.guild.id)).send("Cleverbot has been closed by another user.").then((infoMessage) => {
+            setTimeout(() => {
+              infoMessage.delete();
+            }, 15000);
+          });
+    }else
       return;
     
     client.activeCleverbot.cleverbots.get(Key(message.guild.id, message.channel.id)).resetCache();

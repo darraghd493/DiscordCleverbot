@@ -7,14 +7,14 @@ module.exports = {
   
 	run: async (client, message, args) => {
     if (client.activeCleverbot.servers.has(message.guild.id)) {
-      if (message.channel.id != client.activeCleverbot.servers.get(message.guild.id))
+      if (client.activeCleverbot.servers.get(message.guild.id) != message.channel.id)
         client.channels.cache.get(
           client.activeCleverbot.servers.get(message.guild.id)).send("Cleverbot has been closed by another user.").then((infoMessage) => {
-          setTimeout(() => {
-            infoMessage.delete();
-          }, 15000);
-        });
-    } else
+            setTimeout(() => {
+              infoMessage.delete();
+            }, 15000);
+          });
+    }else
       return;
     
     client.activeCleverbot.cleverbots.get(Key(message.guild.id, message.channel.id)).selfDestruct();
