@@ -2,7 +2,7 @@ const { Cleverbot, Key } = require("../../cleverbot");
 
 module.exports = {
 	name: "start",
-	aliases: ['begin', 'launch', 'load', 'cleverbot', 'cb', 't'],
+	aliases: ['begin', 'launch', 'load', 'cleverbot'],
 	description: "Starts Cleverbot",
   
 	run: async (client, message, args) => {

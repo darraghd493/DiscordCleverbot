@@ -9,9 +9,7 @@ On [repl.it](https://repl.it), an outdated version of [node.js](https://nodejs.o
 npm init -y && npm i --save-dev node@16 && npm config set prefix=$(pwd)/node_modules/node && export PATH=$(pwd)/node_modules/node/bin:$PATH
 ```
 
-this automatically generates the package (if there is none) and then updates and fixes [node.js](https://nodejs.org) to v16.
-
-An alternative to this can be done by going into the `.replit` file and changing the contents of it to;
+this automatically generates the package (if there is none) and then updates and fixes [node.js](https://nodejs.org) to v16. An alternative to this can be done by going into the `.replit` file and changing the contents of it to the following;
 
 ```py
 run = """curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
