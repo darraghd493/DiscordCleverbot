@@ -47,7 +47,6 @@ client.on("ready", () => {
   // Register slash commands
   client.commands.forEach((command) => {
     if (command.slash) {
-      console.log(`Registering slash command ${command.name}`);
       client.api.applications(client.user.id).commands.post({data: {
         name: command.name,
         description: command.description
