@@ -1,0 +1,6 @@
+{
+  "name": "DiscordCleverbot",
+  "description": "An unofficial Discord interface for Cleverbot with slash command support.",
+  "repository": "https://github.com/darraghd493/DiscordCleverbot",
+  "keywords": ["node", "express", "discord", "bot"]
+}
