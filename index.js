@@ -1,4 +1,4 @@
-const { Client, Collection } = require("discord.js");
+const { Client, Collection, GatewayIntentBits } = require("discord.js");
 const prefix = require("./config.json").prefix;
 
 // Check if this is running on repl.it
@@ -21,7 +21,11 @@ app.listen(port, () => {
 
 // Initialize client
 const client = new Client({
-	  intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_VOICE_STATES"],
+	  intents: [
+      GatewayIntentBits.Guilds,
+      GatewayIntentBits.GuildMessages,
+      GatewayIntentBits.GuildVoiceStates
+    ],
     presence: {
         status: "online",
     },
@@ -42,5 +46,5 @@ client.config = require("./config.json");
 
 require("./handler")(client);
 
-// Start the clienta
+// Start the client
 client.login(process.env.token);

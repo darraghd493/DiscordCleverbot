@@ -1,7 +1,9 @@
 const client = require("../index");
 const { Key } = require("../cleverbot");
 
-client.on("interactionCreate", async (interaction) => {
+const { Events } = require("discord.js");
+
+client.on(Events.InteractionCreate, async (interaction) => {
     if (!interaction.isCommand())
         return;
     
@@ -9,6 +11,7 @@ client.on("interactionCreate", async (interaction) => {
     
     if (!locatedCommand)
         return;
-    
-    await locatedCommand.run(client, interaction);
+
+  // Run command on 5 second timeout
+  await locatedCommand.run(client, interaction);
 });

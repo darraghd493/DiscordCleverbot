@@ -1,6 +1,8 @@
 const client = require("../index");
 const { Key } = require("../cleverbot");
 
+const { Events } = require("discord.js");
+
 client.on("messageCreate", async (message) => {
 	if (
 		message.author.bot ||

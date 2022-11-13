@@ -2,6 +2,9 @@ const client = require("../index");
 const activity = require("../config").activity;
 const prefix = require("../config").prefix;
 
+const { REST, Routes, Events, SlashCommandBuilder } = require("discord.js");
+const rest = new REST({ version: '10' }).setToken(process.env.token);
+
 class ActivityManager {
   constructor(activities, delay) {
     this.activities = activities;
@@ -30,7 +33,7 @@ class ActivityManager {
   }
 }
 
-client.on("ready", () => {
+client.on(Events.ClientReady, async () => {
   console.log(`Logged in as bot at ${client.user.username}`);
   
   if (activity.activities.length > 1) {
@@ -44,13 +47,29 @@ client.on("ready", () => {
     }
   }
 
-  // Register slash commands
+
+  // Generate slash commands list
+  const slashCommands = [];
+  
   client.commands.forEach((command) => {
     if (command.slash) {
-      client.api.applications(client.user.id).commands.post({data: {
-        name: command.name,
-        description: command.description
-      }});
+      const commandData = new SlashCommandBuilder().setName(command.name).setDescription(command.description);
+      slashCommands.push(commandData);
     }
   });
+
+  // Generate slash commands data
+  const slashCommandsData = [];
+  
+  slashCommands.forEach((command) => {
+    slashCommandsData.push(command.toJSON());
+  });
+  
+  // Set commands (global)
+  await rest.put(
+  	Routes.applicationCommands(client.id),
+  	{
+      body: slashCommandsData
+    },
+  );
 });
