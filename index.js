@@ -15,9 +15,11 @@ app.get('/', (request, response) => {
   response.sendFile(__dirname + '/page.html');
 });
 
+/*
 app.listen(port, () => {
   console.log(`The server is available at localhost:${port}.`);
 });
+*/
 
 // Initialize client
 const client = new Client({
@@ -43,7 +45,6 @@ client.activeCleverbot = {
 };
 
 client.config = require("./config.json");
-
 require("./handler")(client);
 
 // Start the client

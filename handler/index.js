@@ -6,7 +6,10 @@ const globPromise = promisify(glob);
 
 module.exports = async (client) => {
   // Load commands
-  const commandFiles = await globPromise(`${process.cwd()}/commands/**/*.js`);
+  const globHome = process.cwd().replace(/\\/g, "/");
+  const commandFiles = await globPromise(`${globHome}/commands/**/*.js`);
+  const eventFiles = await globPromise(`${globHome}/events/*.js`);
+
   commandFiles.map((value) => {
     const file = require(value);
     const splitted = value.split("/");
@@ -26,6 +29,5 @@ module.exports = async (client) => {
   });
 
   // Load event files
-  const eventFiles = await globPromise(`${process.cwd()}/events/*.js`);
   eventFiles.map((value) => require(value));
 }
