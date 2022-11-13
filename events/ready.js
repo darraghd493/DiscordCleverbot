@@ -10,17 +10,17 @@ class ActivityManager {
     this.delay = delay;
     this.index = 0;
   }
-  
+
   update() {
     let activity = this.activities[this.index];
-    
+
     client.user.setActivity(activity.message, {
-		  type: activity.type.toUpperCase()
-  	});
-    
+      type: activity.type.toUpperCase()
+    });
+
     this.index++;
-    
-    if (this.index > this.activities.length-1)
+
+    if (this.index > this.activities.length - 1)
       this.index = 0;
   }
 
@@ -33,22 +33,22 @@ class ActivityManager {
 }
 
 client.once(Events.ClientReady, async () => {
-  console.log(`Logged in as bot at ${client.user.username}`);
-  
+  console.log(`Logged in as ${client.user.username}!`);
+
   if (activity.activities.length > 1) {
     if (activity.switch.enabled) {
       let activityManager = new ActivityManager(activity.activities, activity.switch.delay);
       activityManager.start();
     } else {
       client.user.setActivity(activity.activities[0].message, {
-    		type: activity.activities[0].type
+        type: activity.activities[0].type
       });
     }
   }
 
   // Register the slash commands
   const slashCommands = [];
-  
+
   client.commands.forEach((command) => {
     if (command.slash) {
       const commandData = new SlashCommandBuilder().setName(command.name).setDescription(command.description);
@@ -58,11 +58,11 @@ client.once(Events.ClientReady, async () => {
 
   // Generate slash commands data
   const slashCommandsData = [];
-  
+
   slashCommands.forEach((command) => {
     slashCommandsData.push(command.toJSON());
   });
-  
+
   // Register slash commands
   try {
     console.log('Started refreshing application (/) commands.');

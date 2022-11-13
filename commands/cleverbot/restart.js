@@ -44,6 +44,8 @@ module.exports = {
     client.activeCleverbot.cleverbots.get(Key(interaction.guild.id, interaction.channel.id)).resetCache();
     
     interaction.reply({
-      content: "Restarted the Cleverbot conversation!"});
+      content: "Restarted the Cleverbot conversation!",
+			ephemeral: true
+    });
   }
 };

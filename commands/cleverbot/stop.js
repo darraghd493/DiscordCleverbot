@@ -45,6 +45,8 @@ module.exports = {
     client.activeCleverbot.cleverbots.get(Key(interaction.guild.id, interaction.channel.id)).selfDestruct();
     
     interaction.reply({
-      content: "Stopped cleverbot!"});
+      content: "Stopped cleverbot!",
+			ephemeral: true
+    });
   }
 };

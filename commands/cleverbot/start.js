@@ -44,6 +44,8 @@ module.exports = {
     client.activeCleverbot.cleverbots.set(Key(interaction.guild.id, interaction.channel.id), new Cleverbot(client, client.config.cache.limit, false));
     
     interaction.reply({
-      content: "Started Cleverbot!"});
+      content: "Started Cleverbot!",
+			ephemeral: true
+    });
   }
 };

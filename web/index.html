@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" name="viewport"/>
+    
+    <meta property="og:type" content="website"/>
+    <meta property="og:site_name" content="Discord Cleverbot Portal"/>
+    <meta property="og:title" content="Discord Cleverbot Portal"/>
+    <meta property="og:description" content="Discord Cleverbot is an interface for Cleverbot in Discord."/>
+    
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:site" content="@" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+    <meta name="theme-color" content="#7289DA"/>
+    <meta name="description" content="Discord Cleverbot is an interface for Cleverbot in Discord."/>
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+    <meta name="apple-mobile-web-app-title" content="Discord Cleverbot Portal"/>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no"/>
+    <meta name="mobile-web-app-capable" content="yes"/>
+    <meta name="application-name" content="Discord Cleverbot Portal"/>
+
+    <title>Discord Cleverbot Portal</title>
+
+    <link href="assets/css/style.css" rel="stylesheet"/>
+    <link hres="assets/css/normalize.css" rel="stylesheet"/>
+
+    <script src="assets/js/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+  </head>
+  <body>
+    <canvas class="background"></canvas>
+    
+    <div class="centered">
+      <div class="content">
+        <div class="header">
+          <h1>Discord Cleverbot</h1>
+          <p>An interface for Cleverbot in Discord.</p>
+        </div>
+        <br>
+        <div class="buttons">
+          <a href="invite" class="button">Invite</a>
+          <a href="discord" class="button">Support</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>Made with ❤ by doge2018</p>
+    </div>
+
+    <script>
+      window.onload = function() {
+          Particles.init({
+              selector: '.background',
+              speed: 1,
+              color: "#ffffff"
+          });
+      }
+    </script>
+
+    <script>
+      const canvas = document.querySelector('canvas');
+      const header = document.getElementsByClassName('content').item(0);
+      const headerText = document.getElementsByTagName('h1').item(0);
+      const headerSubText = document.getElementsByTagName('p').item(0);
+      const buttons = document.getElementsByClassName('buttons').item(0);
+      const logo = document.getElementsByClassName('logo').item(0);
+      
+      function parallaxIt(x, y, target, movement) {
+          var $this = target;
+          var relX = x - $this.offsetLeft;
+          var relY = y - $this.offsetTop;
+          
+          TweenLite.to($this, 0.2, {
+              x: (relX - $this.offsetWidth / 2) / $this.offsetWidth * movement,
+              y: (relY - $this.offsetHeight / 2) / $this.offsetHeight * movement
+          });
+      }
+
+      document.addEventListener('mousemove', function(e) {
+        var x = e.clientX || e.pageX;
+        var y = e.clientY || e.pageY;
+        x -= window.innerWidth / 2;
+        y -= window.innerHeight / 2;
+
+        parallaxIt(x, y, canvas, 50);
+        parallaxIt(x, y, header, 10);
+        parallaxIt(x, y, headerText, 1);
+        parallaxIt(x, y, buttons, 0.5);
+        parallaxIt(x, y, logo, 2);
+      });
+    </script>
+  </body>
+</html>

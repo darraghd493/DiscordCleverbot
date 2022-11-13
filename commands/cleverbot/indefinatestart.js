@@ -44,7 +44,9 @@ module.exports = {
     client.activeCleverbot.cleverbots.set(Key(interaction.guild.id, interaction.channel.id), new Cleverbot(client.activeCleverbot, client.config.cache.limit, true));
     
     interaction.reply({
-      content: "Started Cleverbot!"}).then((infoMessage) => {
+      content: "Started Cleverbot!",
+			ephemeral: true
+    }).then((infoMessage) => {
       setTimeout(() => {
         if (infoMessage.editable) // https://github.com/discordjs/discord.js/issues/7091
           infoMessage.delete();

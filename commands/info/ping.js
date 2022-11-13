@@ -54,6 +54,8 @@ module.exports = {
     let latency = client.ws.ping;
 
     interaction.reply({
-      content: `My latency is ${generateLatencyDescriptiveString(latency)}!`});
+      content: `My latency is ${generateLatencyDescriptiveString(latency)}!`,
+			ephemeral: true
+    });
   }
 };

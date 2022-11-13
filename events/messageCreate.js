@@ -21,7 +21,12 @@ client.on("messageCreate", async (message) => {
   	if (!locatedCommand)
       return;
     
-  	await locatedCommand.run(client, message, args);
+    try {
+  	  await locatedCommand.run(client, message, args);
+    } catch (error) {
+      message.channel.send({ content: "There was an error while executing this command!", ephemeral: true });
+      console.log(error);
+    }
   } else {
     if (client.activeCleverbot.servers.has(message.guild.id) && 
         client.activeCleverbot.servers.get(message.guild.id) == message.channel.id
