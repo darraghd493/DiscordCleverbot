@@ -1,6 +1,7 @@
 const { glob } = require("glob");
 const { promisify } = require("util");
 const { Client } = require("discord.js");
+
 const globPromise = promisify(glob);
 
 module.exports = async (client) => {
@@ -14,6 +15,13 @@ module.exports = async (client) => {
     if (file.name) {
       const properties = { directory, ...file };
       client.commands.set(file.name, properties);
+
+      // Register aliases
+      if (file.aliases.length !== 0) {
+        file.aliases.forEach((alias) => {
+          client.commands.set(alias, file.name);
+        });
+      }
     }
   });
 

@@ -26,8 +26,8 @@ class Cleverbot {
   }
 
   selfDestruct() {
-    this.client.activeCleverbot.servers.delete(message.guild.id);
-    this.client.activeCleverbot.cleverbots.delete(Key(message.guild.id, message.channel.id));
+    this.client = null;
+    this.cache = null;
   }
 
   resetCache() {

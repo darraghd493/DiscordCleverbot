@@ -35,26 +35,25 @@ function generateLatencyDescriptiveString(latency) {
 
 }
 
+const { Interaction } = require("discord.js");
+
 module.exports = {
 	name: "ping",
 	aliases: [],
 	description: "Get the ping of the bot",
+  slash: true,
   
 	run: async (client, message, args) => {
-    let apiLatency = client.ws.ping;
-    
-		message.channel.send({
-      content: `<@${message.author.id}>, collecting ping information...`}).then((latencyMessage) => {
+    let latency = client.ws.ping;
 
-      let serverLatency = Date.now() - message.createdTimestamp;
-      
-      latencyMessage.edit({
-        content: `<@${message.author.id}>, my latency is ${generateLatencyDescriptiveString(serverLatency)}, with ${generateLatencyDescriptiveString(apiLatency)} for the Discord API.`}).then((editedLatencyMessage) => {
-        setTimeout(() => {
-          if (editedLatencyMessage.editable) // https://github.com/discordjs/discord.js/issues/7091
-            editedLatencyMessage.delete();
-        }, 15000);
-        });
-    });
-	}
+		message.channel.send({
+      content: `My latency is ${generateLatencyDescriptiveString(latency)}!`});
+	},
+
+  run: async (client, interaction) => {
+    let latency = client.ws.ping;
+
+    interaction.reply({
+      content: `My latency is ${generateLatencyDescriptiveString(latency)}!`});
+  }
 };

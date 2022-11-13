@@ -1,6 +1,11 @@
 const { Client, Collection } = require("discord.js");
 const prefix = require("./config.json").prefix;
 
+// Check if this is running on repl.it
+// if not load dotenv and config
+const isRepl = process.env.REPL_SLUG ? true : false;
+if (!isRepl) require('dotenv').config()
+
 // Initialize server
 const express = require('express');
 const app = express();

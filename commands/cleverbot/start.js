@@ -4,6 +4,7 @@ module.exports = {
 	name: "start",
 	aliases: ['begin', 'launch', 'load', 'cleverbot'],
 	description: "Starts Cleverbot",
+  slash: true,
   
 	run: async (client, message, args) => {
     if (client.activeCleverbot.servers.has(message.guild.id)) {
@@ -26,5 +27,23 @@ module.exports = {
           infoMessage.delete();
       }, 15000);
     });
-	}
+	},
+
+  run: async (client, interaction) => {
+    if (client.activeCleverbot.servers.has(interaction.guild.id)) {
+      if (client.activeCleverbot.servers.get(interaction.guild.id) != interaction.channel.id)
+        client.channels.cache.get(
+          client.activeCleverbot.servers.get(interaction.guild.id)).send("Cleverbot has been closed by another user.").then((infoMessage) => {
+            setTimeout(() => {
+              infoMessage.delete();
+            }, 15000);
+          });
+    }
+    
+    client.activeCleverbot.servers.set(interaction.guild.id, interaction.channel.id);
+    client.activeCleverbot.cleverbots.set(Key(interaction.guild.id, interaction.channel.id), new Cleverbot(client, client.config.cache.limit, false));
+    
+    interaction.reply({
+      content: "Started Cleverbot!"});
+  }
 };

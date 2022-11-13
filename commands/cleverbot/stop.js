@@ -1,9 +1,11 @@
+const { Interaction } = require("discord.js");
 const { Cleverbot, Key } = require("../../cleverbot");
 
 module.exports = {
 	name: "stop",
 	aliases: ['exit', 'close', 'end', 'quit'],
 	description: "Stops Cleverbot",
+  slash: true,
   
 	run: async (client, message, args) => {
     if (client.activeCleverbot.servers.has(message.guild.id)) {
@@ -26,5 +28,23 @@ module.exports = {
           infoMessage.delete();
       }, 15000);
     });
-	}
+	},
+
+  run: async (client, interaction) => {
+    if (client.activeCleverbot.servers.has(interaction.guild.id)) {
+      if (client.activeCleverbot.servers.get(interaction.guild.id) != interaction.channel.id)
+        client.channels.cache.get(
+          client.activeCleverbot.servers.get(interaction.guild.id)).send("Cleverbot has been closed by another user.").then((infoMessage) => {
+            setTimeout(() => {
+              infoMessage.delete();
+            }, 15000);
+          });
+    }else
+      return;
+    
+    client.activeCleverbot.cleverbots.get(Key(interaction.guild.id, interaction.channel.id)).selfDestruct();
+    
+    interaction.reply({
+      content: "Stopped cleverbot!"});
+  }
 };
