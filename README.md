@@ -81,6 +81,8 @@ The following environment variables are required to run the bot:
 | `TOKEN` | The Discord bot token. |
 | `PORT` | The port to run the web server on. |
 
+**You will need to create a new file to do this.**
+
 ### Configuration file
 The configuration file is located at `config.json` and contains the following options:
 
