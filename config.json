@@ -16,6 +16,10 @@
       {
         "message": "with Cleverbot",
         "type": "Playing"
+      },
+      {
+        "message": "with Discord",
+        "type": "Playing"
       }
     ]
   },

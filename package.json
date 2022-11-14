@@ -1,6 +1,6 @@
 {
   "name": "discord-cleverbot",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "This is an unofficial Discord interface for Cleverbot.",
   "main": "index.js",
   "scripts": {
@@ -19,5 +19,8 @@
     "express": "^4.18.2",
     "glob": "^8.0.3",
     "util": "^0.12.5"
+  },
+  "node": {
+    "engine": "16.14.2"
   }
 }

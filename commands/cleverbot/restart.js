@@ -38,8 +38,13 @@ module.exports = {
               infoMessage.delete();
             }, 15000);
           });
-    }else
+    } else {
+      interaction.reply({
+        content: "There is nothing to restart!",
+        ephemeral: true
+      });
       return;
+    }
     
     client.activeCleverbot.cleverbots.get(Key(interaction.guild.id, interaction.channel.id)).resetCache();
     

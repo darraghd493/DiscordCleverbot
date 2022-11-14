@@ -23,11 +23,13 @@ class Cleverbot {
     this.client = client;
     this.limit = limit;
     this.indefinate = indefinate;
+    this.destroyed = false;
   }
 
   selfDestruct() {
     this.client = null;
     this.cache = null;
+    this.destroyed = true;
   }
 
   resetCache() {
@@ -46,6 +48,8 @@ class Cleverbot {
   }
 
   sendMessage(contents, channel) {
+    if (this.client == null || this.cache == null || this.destroyed)
+      return;
     contents = punctuateMessage(contents);
 
     try {

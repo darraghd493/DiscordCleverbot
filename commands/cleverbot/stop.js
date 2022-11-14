@@ -39,10 +39,17 @@ module.exports = {
               infoMessage.delete();
             }, 15000);
           });
-    }else
+    } else {
+      interaction.reply({
+        content: "There is nothing to stop!",
+        ephemeral: true
+      });
       return;
-    
-    client.activeCleverbot.cleverbots.get(Key(interaction.guild.id, interaction.channel.id)).selfDestruct();
+    }
+
+    const key = Key(interaction.guild.id, interaction.channel.id);
+    client.activeCleverbot.cleverbots.get(key).selfDestruct();
+    client.activeCleverbot.cleverbots.delete(key);
     
     interaction.reply({
       content: "Stopped cleverbot!",
