@@ -127,3 +127,5 @@ This project is licensed under the [GNU General Public License v3.0](LICENSE).
 
 ## Notes
 * This bot does not use the API, and instead simulates the webpage with [cleverbot-free](https://npmjs.com/package/cleverbot-free), a package available on [npm](https://npmjs.com).
+* Please forgive my mess of tags, I'm just trying to advertise this as it's something I've worked on for quite a while!
+
