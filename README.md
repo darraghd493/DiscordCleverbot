@@ -7,9 +7,11 @@ Discord Cleverbot is an unofficial Discord interface for [Cleverbot](https://cle
 ### 1.0.0
 - Initial release
 
-*I lost forgot happened between 1.0.0 and 2.0.0...*
-
 ## 2.0.0
+- Add slash commands
+- Improve base and fix bugs
+- Brand new README and weebsite
+and much more
 
 ## Installation
 ### Requirements
