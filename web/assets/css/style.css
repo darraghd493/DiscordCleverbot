@@ -168,6 +168,12 @@ section {
     backdrop-filter: blur(4px);
 }
 
+.footer a {
+    /* font */
+    font-size: 1em;
+    font-weight: 300;
+}
+
 @keyframes header {
     0% {
         opacity: 0%;
