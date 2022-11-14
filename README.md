@@ -3,6 +3,11 @@ Discord Cleverbot is an unofficial Discord interface for [Cleverbot](https://cle
 
 ![Home page image](https://raw.githubusercontent.com/darraghd493/DiscordCleverbot/main/docs/img/Home.png)
 
+## Links
+#### [Website](https://DiscordCleverbot.doge2018.repl.co)
+#### [Invite](https://DiscordCleverbot.doge2018.repl.co/invite)
+#### [Discord](https://DiscordCleverbot.doge2018.repl.co/discord)
+
 ## Changelog
 ### 1.0.0
 - Initial release
